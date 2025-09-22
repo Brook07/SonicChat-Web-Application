@@ -16,22 +16,23 @@ export const signup = async (req, res) => {
          }
 
          // check if emails valid: regex
-         const emailRegex = /^[^\s@] + @[^+\s@] + \.[^\@] +$/;
-         if (!emailRegex.test(email)) {
-             return res.status(400).json({ message : "Invaild email format" });
-        }
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: "Invalid email format" });
+    }
+
         const user = await User.findOne({email});
-        if(user) return res.status(400).json({message:"Email already exists"})
+        if(user) return res.status(400).json({message:"Email already exists"});
 
             // 12345 => $dnjasdkasj_?dmsakmk
             const salt = await bcrypt.genSalt(10)
-            const hashedPassword =  await bcrypt.hash(password,salt)
+            const hashedPassword =  await bcrypt.hash(password,salt);
 
             const newUser = new User({
                 fullName,
                 email,
                 password: hashedPassword
-            })
+            });
             
             if(newUser){
                 generateToken(newUser._id, res);
@@ -41,7 +42,7 @@ export const signup = async (req, res) => {
                     _id:newUser._id,
                     fullName:newUser.fullName,
                     email:newUser.email,
-                    profile:newUser.profilePic,
+                    profilePic:newUser.profilePic,
                     }
                 );
             }else{

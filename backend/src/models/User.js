@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     },
      profilePic: {
         type: String,
-        defailt: "",
+        default: "",
     },
 },
  {timestamps: true } //createdAt & updatedAt
