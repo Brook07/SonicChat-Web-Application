@@ -13,11 +13,11 @@ const userSchema = new mongoose.Schema({
      password: {
         type: String,
         required: true,
-        minlength:6
+        minlength:6,
     },
      profilePic: {
         type: String,
-        defailt: ""
+        defailt: "",
     },
 },
  {timestamps: true } //createdAt & updatedAt
