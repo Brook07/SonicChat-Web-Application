@@ -2,7 +2,7 @@ import { sendWelcomeEmail } from "../emails/emailHandlers.js";
 import { generateToken } from "../lib/utils.js";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
-import "dotenv/config";
+import { ENV } from "..lib/env.js";
 
 export const signup = async (req, res) => {
   const { fullName, email, password } = req.body;
@@ -49,7 +49,7 @@ export const signup = async (req, res) => {
 
       try {
         // Use process.env instead of ENV to access environment variables
-        await sendWelcomeEmail(savedUser.email, savedUser.fullName, process.env.CLIENT_URL);
+        await sendWelcomeEmail(savedUser.email, savedUser.fullName, ENV.CLIENT_URL);
       } catch (error) {
         console.error("Failed to send welcome email:", error);
       }
