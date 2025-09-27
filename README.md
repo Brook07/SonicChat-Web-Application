@@ -1,9 +1,7 @@
 # 💬 SonicChat - Real-Time Web Application
 
 A **full-stack real-time chat application** with authentication, instant messaging, file uploads, notifications, and more. Built with **Node.js, Express, MongoDB, Socket.io, React, and Tailwind CSS**.
-## 📸 Screenshots
 
-### 🔐 Login Page
 ![Login Screenshot](https://github.com/Brook07/SonicChat-Web-Application/blob/main/UI%20screenshots/chat_tab_messages_Screen.jpeg)
 
 ## ✨ Features
